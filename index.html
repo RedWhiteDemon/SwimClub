@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwimClub | Клуб любителей плавания</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="api-offline-banner" class="api-banner hidden" role="status" aria-live="polite"></div>
+
+    <div class="site-topbar">
+      <div class="container site-topbar__inner">
+        <span class="site-topbar__brand">SwimClub</span>
+        <div class="auth-toolbar" id="auth-toolbar"></div>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1>Клуб любителей плавания</h1>
+        <p>
+          Тренировки для начинающих и продвинутых. Следите за расписанием,
+          выбирайте тренера и записывайтесь онлайн.
+        </p>
+        <a href="#booking-requests" class="btn" data-tab-link="booking-requests">Записаться на тренировку</a>
+      </div>
+    </header>
+
+    <nav class="tabs container" aria-label="Разделы сайта">
+      <button class="tab-btn active" type="button" data-tab-target="home">Главная</button>
+      <button class="tab-btn" type="button" data-tab-target="schedule">Расписание</button>
+      <button class="tab-btn" type="button" data-tab-target="coaches">Тренеры</button>
+      <button class="tab-btn" type="button" data-tab-target="booking-requests">Запись и заявки</button>
+      <button class="tab-btn" type="button" data-tab-target="video">Видео</button>
+      <button class="tab-btn" type="button" data-tab-target="discussions">Обсуждения</button>
+      <button class="tab-btn hidden" type="button" data-tab-target="cabinet" id="tab-btn-cabinet">Личный кабинет</button>
+      <button class="tab-btn hidden" type="button" data-tab-target="admin" id="tab-btn-admin">Админ</button>
+    </nav>
+
+    <main class="container">
+      <section class="tab-panel active" data-tab-panel="home">
+        <section class="card card--home home-welcome">
+          <p class="home-eyebrow">Добро пожаловать в SwimClub</p>
+          <h2 class="home-hero-title">Плавайте регулярно, технично и без лишнего стресса</h2>
+          <p class="home-lead">
+            Здесь собрано всё для комфортной записи: актуальное расписание, команда тренеров, материалы по технике
+            и ваши заявки в личном кабинете. Выберите шаг ниже или откройте нужную вкладку меню.
+          </p>
+          <div class="home-quick" role="navigation" aria-label="Быстрый переход">
+            <button type="button" class="home-quick__btn" data-tab-link="schedule">
+              <span class="home-quick__icon" aria-hidden="true">📅</span>
+              <span class="home-quick__label">Расписание</span>
+              <span class="home-quick__hint">Дни, время, свободные места</span>
+            </button>
+            <button type="button" class="home-quick__btn" data-tab-link="coaches">
+              <span class="home-quick__icon" aria-hidden="true">👤</span>
+              <span class="home-quick__label">Тренеры</span>
+              <span class="home-quick__hint">Опыт, специализация, профили</span>
+            </button>
+            <button type="button" class="home-quick__btn" data-tab-link="booking-requests">
+              <span class="home-quick__icon" aria-hidden="true">✏️</span>
+              <span class="home-quick__label">Запись</span>
+              <span class="home-quick__hint">Заявка после входа</span>
+            </button>
+            <button type="button" class="home-quick__btn" data-tab-link="video">
+              <span class="home-quick__icon" aria-hidden="true">▶</span>
+              <span class="home-quick__label">Видео</span>
+              <span class="home-quick__hint">Техника и тренировки</span>
+            </button>
+            <button type="button" class="home-quick__btn" data-tab-link="discussions">
+              <span class="home-quick__icon" aria-hidden="true">💬</span>
+              <span class="home-quick__label">Обсуждения</span>
+              <span class="home-quick__hint">Темы и комментарии участников</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="card home-about">
+          <div class="home-section-head">
+            <h2 class="home-section-title">О клубе</h2>
+            <p class="home-section-desc">
+              Мы собираем людей, которым важна вода как способ быть в форме, а не только «отплыть кольцо».
+              Групповые тренировки, внутренние заплывы и понятная среда без давления «как в секции».
+            </p>
+          </div>
+          <ul class="home-features">
+            <li class="home-feature">
+              <span class="home-feature__icon" aria-hidden="true">◎</span>
+              <div>
+                <strong class="home-feature__title">Группы под уровень</strong>
+                <p class="home-feature__text">От первых шагов в дорожке до подготовки к любительским стартам.</p>
+              </div>
+            </li>
+            <li class="home-feature">
+              <span class="home-feature__icon" aria-hidden="true">◇</span>
+              <div>
+                <strong class="home-feature__title">Заявки онлайн</strong>
+                <p class="home-feature__text">После регистрации заявки сохраняются на сервере и доступны в личном кабинете.</p>
+              </div>
+            </li>
+            <li class="home-feature">
+              <span class="home-feature__icon" aria-hidden="true">≋</span>
+              <div>
+                <strong class="home-feature__title">Всё на одном сайте</strong>
+                <p class="home-feature__text">Расписание с местами, карточки тренеров и подборка видео по плаванию.</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card home-news-section">
+          <div class="home-section-head">
+            <h2 class="home-section-title">Новости клуба</h2>
+            <p class="home-section-desc">Анонсы сезона и календарь событий — в ленте ниже.</p>
+          </div>
+          <div id="news-list" class="news-grid"></div>
+        </section>
+
+        <section class="card home-photos-section">
+          <div class="home-section-head">
+            <h2 class="home-section-title">Атмосфера на воде</h2>
+            <p class="home-section-desc">
+              Кадры с тренировок: разминка, работа над дыханием, выносливость и стартовый блок.
+            </p>
+          </div>
+          <div id="photo-gallery" class="media-grid"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="schedule">
+        <section class="card card--schedule">
+          <div class="schedule-intro">
+            <h2>Расписание тренировок</h2>
+            <p class="schedule-subtitle" id="schedule-subtitle-text">
+              Выберите день и уровень или найдите слот по тренеру. Колонка «Места» учитывает заявки на сервере
+              (при запущенном API).
+            </p>
+            <p id="schedule-summary" class="schedule-summary" aria-live="polite"></p>
+          </div>
+          <div class="schedule-toolbar">
+            <div class="filters schedule-filters">
+              <label>
+                <span class="filters__text">День недели</span>
+                <select id="schedule-day-filter" class="schedule-select" aria-label="Фильтр по дню недели">
+                  <option value="">Все дни</option>
+                </select>
+              </label>
+              <label>
+                <span class="filters__text">Уровень группы</span>
+                <select id="schedule-level-filter" class="schedule-select" aria-label="Фильтр по уровню">
+                  <option value="">Все уровни</option>
+                </select>
+              </label>
+              <label class="filter-grow">
+                <span class="filters__text">Поиск</span>
+                <input
+                  type="search"
+                  id="schedule-search"
+                  class="schedule-search-input"
+                  placeholder="Тренер, время или тип группы"
+                  aria-label="Поиск по расписанию"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+            <button type="button" id="schedule-reset-filters" class="btn btn-ghost schedule-reset">
+              Сбросить фильтры
+            </button>
+          </div>
+          <div class="table-wrap schedule-table-wrap">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th scope="col">День</th>
+                  <th scope="col">Время</th>
+                  <th scope="col">Группа</th>
+                  <th scope="col">Тренер</th>
+                  <th scope="col">Нагрузка дорожки</th>
+                </tr>
+              </thead>
+              <tbody id="schedule-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="coaches">
+        <section class="card">
+          <h2>Тренеры</h2>
+          <div id="coaches-grid" class="coaches-grid"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="booking-requests">
+        <section class="card api-offline-card hidden" id="booking-api-offline">
+          <h2>Сервер недоступен</h2>
+          <p>
+            Для входа и записи запустите API (<code>npm install</code>, затем <code>npm run dev</code>) и откройте сайт через
+            тот же хост, например <a href="http://localhost:3000/">http://localhost:3000/</a>.
+          </p>
+        </section>
+
+        <section class="card guest-gate-card hidden" id="booking-guest-gate">
+          <h2>Запись на тренировку</h2>
+          <p class="guest-gate-card__lead">
+            Войдите или зарегистрируйтесь, чтобы отправить заявку и видеть свои записи на сервере.
+          </p>
+          <div class="guest-gate-card__actions">
+            <button type="button" class="btn" id="gate-booking-login">Войти</button>
+            <button type="button" class="btn btn-ghost" id="gate-booking-register">Регистрация</button>
+          </div>
+        </section>
+
+        <div id="booking-user-blocks" class="hidden">
+          <section class="card card--booking" id="booking">
+            <div class="booking-intro">
+              <h2>Запись на тренировку</h2>
+              <p class="booking-subtitle">
+                Заполните контакты и выберите удобный слот. После отправки заявка появится в списке ниже и в личном кабинете.
+              </p>
+            </div>
+            <form id="booking-form" class="booking-form" novalidate>
+              <div class="booking-form__fields">
+                <div class="field">
+                  <label class="field__label" for="field-name">Имя <span class="field__required" aria-hidden="true">*</span></label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="field-name"
+                    class="field__control"
+                    autocomplete="name"
+                    placeholder="Как к вам обращаться"
+                    maxlength="80"
+                  />
+                  <small class="field-error hidden" data-error-for="name" role="alert"></small>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="field-phone">Телефон <span class="field__required" aria-hidden="true">*</span></label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="field-phone"
+                    class="field__control field__control--phone"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    placeholder="+375 29 123-45-67"
+                    aria-describedby="phone-hint"
+                  />
+                  <span id="phone-hint" class="field__hint">Формат Беларуси: код <strong>+375</strong> и 9 цифр номера.</span>
+                  <small class="field-error hidden" data-error-for="phone" role="alert"></small>
+                </div>
+                <div class="field field--full">
+                  <label class="field__label" for="session-select">Тренировка <span class="field__required" aria-hidden="true">*</span></label>
+                  <select name="session" id="session-select" class="field__control field__control--select" required aria-describedby="session-hint"></select>
+                  <span id="session-hint" class="field__hint">День, время и уровень группы по расписанию клуба.</span>
+                  <small class="field-error hidden" data-error-for="session" role="alert"></small>
+                </div>
+                <div class="field field--full field--level">
+                  <label class="field__label" for="field-level">Ваш уровень плавания <span class="field__required" aria-hidden="true">*</span></label>
+                  <select name="level" id="field-level" class="field__control field__control--select" required aria-describedby="level-hint">
+                    <option value="Начинающий">Начинающий</option>
+                    <option value="Средний">Средний</option>
+                    <option value="Продвинутый">Продвинутый</option>
+                  </select>
+                  <span id="level-hint" class="field__hint">Оцените свой уровень — тренер сможет скорректировать группу при необходимости.</span>
+                </div>
+              </div>
+              <div class="booking-form__footer">
+                <button class="btn btn-submit" type="submit">
+                  <span class="btn-submit__text">Отправить заявку</span>
+                  <span class="btn-submit__sub">Сохранится на сервере</span>
+                </button>
+                <button class="btn btn-ghost hidden" type="button" id="cancel-edit">Отменить редактирование</button>
+              </div>
+            </form>
+            <p id="message" class="message message--booking" aria-live="polite"></p>
+          </section>
+
+          <section class="card card--applications">
+            <div class="history-head">
+              <div class="history-intro">
+                <h2>Мои заявки</h2>
+                <p class="history-subtitle">Список хранится на сервере для вашего аккаунта.</p>
+              </div>
+              <div class="applications-toolbar">
+                <label class="applications-search-label">
+                  <span class="visually-hidden">Поиск заявок</span>
+                  <input
+                    type="search"
+                    id="applications-search"
+                    placeholder="Имя, телефон, день или тренер…"
+                    aria-label="Поиск заявок по имени, телефону или тренировке"
+                    autocomplete="off"
+                  />
+                </label>
+              </div>
+            </div>
+            <ul id="applications-list" class="applications-list" aria-live="polite"></ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="video">
+        <section class="card api-offline-card hidden" id="video-api-offline">
+          <h2>Сервер недоступен</h2>
+          <p>Видео доступны после входа при работающем API. Запустите сервер и обновите страницу.</p>
+        </section>
+
+        <section class="card guest-gate-card hidden" id="video-guest-gate">
+          <h2>Видео по плаванию</h2>
+          <p class="guest-gate-card__lead">Войдите, чтобы смотреть подборку роликов по технике.</p>
+          <div class="guest-gate-card__actions">
+            <button type="button" class="btn" id="gate-video-login">Войти</button>
+            <button type="button" class="btn btn-ghost" id="gate-video-register">Регистрация</button>
+          </div>
+        </section>
+
+        <section class="card hidden" id="video-user-section">
+          <div class="video-head">
+            <h2>Видео по плаванию</h2>
+            <input type="search" id="video-search" placeholder="Поиск по названию" aria-label="Поиск видео" />
+          </div>
+          <div id="video-gallery" class="video-grid"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="discussions">
+        <div id="discussions-root">
+          <div id="discussions-list-view">
+            <section class="card discussions-card">
+              <div class="discussions-head">
+                <h2>Обсуждения</h2>
+                <p class="discussions-lead">
+                  Темы от участников клуба: вопросы, советы и заметки в формате постов и комментариев — как на форуме или Reddit.
+                </p>
+              </div>
+              <div id="discussions-create-wrap" class="discussions-create-wrap hidden">
+                <button type="button" class="btn btn-sm" id="discussions-toggle-new">Новая тема</button>
+                <form id="discussions-new-form" class="discussions-new-form hidden">
+                  <label class="discussions-field">
+                    <span class="discussions-field__label">Заголовок</span>
+                    <input
+                      type="text"
+                      id="discussions-new-title"
+                      class="discussions-input"
+                      maxlength="300"
+                      required
+                      autocomplete="off"
+                    />
+                  </label>
+                  <label class="discussions-field">
+                    <span class="discussions-field__label">Текст (необязательно)</span>
+                    <textarea id="discussions-new-body" class="discussions-textarea" rows="6" maxlength="8000"></textarea>
+                  </label>
+                  <div class="discussions-form-actions">
+                    <button type="submit" class="btn btn-sm">Опубликовать</button>
+                    <button type="button" class="btn btn-ghost btn-sm" id="discussions-cancel-new">Отмена</button>
+                  </div>
+                  <p id="discussions-new-error" class="discussions-form-error hidden" role="alert"></p>
+                </form>
+              </div>
+              <p id="discussions-list-guest" class="discussions-guest-hint hidden">
+                Войдите в аккаунт, чтобы создавать темы и комментировать. Читать ленту могут все.
+              </p>
+              <p id="discussions-list-offline" class="discussions-offline hidden" role="status">
+                Сервер недоступен — не удалось загрузить темы.
+              </p>
+              <ul id="discussions-post-list" class="discussion-post-list" aria-live="polite"></ul>
+            </section>
+          </div>
+          <div id="discussions-thread-view" class="hidden">
+            <section class="card discussions-thread-card">
+              <button type="button" class="btn btn-ghost btn-sm discussions-back" id="discussions-back-list">
+                ← К списку тем
+              </button>
+              <div id="discussions-thread-post-wrap" class="discussion-thread-post-wrap">
+                <div id="discussions-thread-post-read" class="discussion-thread-post-read"></div>
+                <form id="discussions-edit-post-form" class="discussion-edit-post-form hidden">
+                  <label class="discussions-field">
+                    <span class="discussions-field__label">Заголовок</span>
+                    <input
+                      type="text"
+                      id="discussions-edit-post-title"
+                      class="discussions-input"
+                      maxlength="300"
+                      required
+                      autocomplete="off"
+                    />
+                  </label>
+                  <label class="discussions-field">
+                    <span class="discussions-field__label">Текст</span>
+                    <textarea id="discussions-edit-post-body" class="discussions-textarea" rows="6" maxlength="8000"></textarea>
+                  </label>
+                  <div class="discussions-form-actions">
+                    <button type="submit" class="btn btn-sm">Сохранить</button>
+                    <button type="button" class="btn btn-ghost btn-sm" id="discussions-edit-post-cancel">Отмена</button>
+                  </div>
+                  <p id="discussions-edit-post-error" class="discussions-form-error hidden" role="alert"></p>
+                </form>
+              </div>
+              <h3 class="discussion-comments-title">Комментарии</h3>
+              <ul id="discussions-thread-comments" class="discussion-comment-list" aria-live="polite"></ul>
+              <div id="discussions-edit-comment-wrap" class="discussion-edit-comment-wrap hidden">
+                <p class="discussion-edit-comment__label">Редактирование комментария</p>
+                <form id="discussions-edit-comment-form" class="discussion-edit-comment-form">
+                  <textarea
+                    id="discussions-edit-comment-body"
+                    class="discussions-textarea"
+                    rows="3"
+                    maxlength="4000"
+                    required
+                    aria-label="Текст комментария"
+                  ></textarea>
+                  <div class="discussions-form-actions">
+                    <button type="submit" class="btn btn-sm">Сохранить</button>
+                    <button type="button" class="btn btn-ghost btn-sm" id="discussions-edit-comment-cancel">Отмена</button>
+                  </div>
+                  <p id="discussions-edit-comment-error" class="discussions-form-error hidden" role="alert"></p>
+                </form>
+              </div>
+              <form id="discussions-comment-form" class="discussion-comment-form hidden">
+                <label class="discussions-field">
+                  <textarea
+                    id="discussions-comment-body"
+                    class="discussions-textarea"
+                    rows="3"
+                    maxlength="4000"
+                    required
+                    placeholder="Ваш комментарий…"
+                    aria-label="Текст комментария"
+                  ></textarea>
+                </label>
+                <button type="submit" class="btn btn-sm">Отправить</button>
+                <p id="discussions-comment-error" class="discussions-form-error hidden" role="alert"></p>
+              </form>
+              <p id="discussions-comment-guest" class="discussions-guest-hint hidden">Войдите, чтобы оставить комментарий.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="cabinet">
+        <section class="card">
+          <h2>Профиль</h2>
+          <p id="cabinet-guest-hint" class="cabinet-hint hidden">Войдите, чтобы увидеть данные профиля.</p>
+          <dl id="cabinet-profile-dl" class="cabinet-dl hidden"></dl>
+        </section>
+        <section class="card">
+          <h2>Мои заявки</h2>
+          <ul id="cabinet-apps-list" class="applications-list" aria-live="polite"></ul>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="admin" id="tab-panel-admin">
+        <section class="card">
+          <h2>Расписание (админ)</h2>
+          <p class="admin-panel-desc">Изменения сразу видны всем на вкладке «Расписание» и в форме записи.</p>
+          <div id="admin-sessions-mount"></div>
+          <h3 class="admin-form-title">Новый слот</h3>
+          <form id="admin-session-form" class="admin-grid-form">
+            <div class="field">
+              <label class="field__label" for="adm-s-id">ID (необязательно)</label>
+              <input class="field__control" id="adm-s-id" name="id" type="text" placeholder="s-mon-1900" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-s-day">День</label>
+              <input class="field__control" id="adm-s-day" name="day" type="text" required placeholder="Понедельник" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-s-time">Время</label>
+              <input class="field__control" id="adm-s-time" name="time" type="text" required placeholder="19:00-20:00" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-s-level">Уровень / группа</label>
+              <input class="field__control" id="adm-s-level" name="level" type="text" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-s-coach">Тренер</label>
+              <input class="field__control" id="adm-s-coach" name="coach" type="text" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-s-cap">Вместимость</label>
+              <input class="field__control" id="adm-s-cap" name="capacity" type="number" min="1" required />
+            </div>
+            <div class="field field--full admin-form-actions">
+              <button type="submit" class="btn">Добавить слот</button>
+            </div>
+          </form>
+        </section>
+        <section class="card">
+          <h2>Заявки участников</h2>
+          <p class="admin-panel-desc">Все записи на тренировки. Удаление заявки освобождает место в слоте.</p>
+          <div id="admin-applications-mount"></div>
+        </section>
+        <section class="card">
+          <h2>Новости</h2>
+          <div id="admin-news-mount"></div>
+          <h3 class="admin-form-title">Новая новость</h3>
+          <form id="admin-news-form" class="admin-stacked-form">
+            <div class="field">
+              <label class="field__label" for="adm-n-title">Заголовок</label>
+              <input class="field__control" id="adm-n-title" name="title" type="text" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-n-date">Дата (YYYY-MM-DD)</label>
+              <input class="field__control" id="adm-n-date" name="date" type="text" required placeholder="2026-05-01" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-n-tag">Тег</label>
+              <input class="field__control" id="adm-n-tag" name="tag" type="text" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="adm-n-text">Текст</label>
+              <textarea class="field__control" id="adm-n-text" name="text" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Добавить новость</button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>SwimClub, 2026. Плавание с удовольствием и результатом.</p>
+      </div>
+    </footer>
+
+    <div class="modal-overlay hidden" id="modal-login" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
+      <div class="modal-dialog">
+        <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">×</button>
+        <h2 id="modal-login-title">Вход</h2>
+        <div id="login-credentials-block">
+          <form id="form-login" class="modal-form">
+            <div class="field">
+              <label class="field__label" for="login-email">Email</label>
+              <input class="field__control" type="email" id="login-email" name="email" required autocomplete="email" maxlength="254" title="Адрес вида имя@домен.зона, до 254 символов" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="login-password">Пароль</label>
+              <div class="field__password">
+                <input
+                  class="field__control field__control--with-toggle"
+                  type="password"
+                  id="login-password"
+                  name="password"
+                  required
+                  autocomplete="current-password"
+                />
+                <button
+                  type="button"
+                  class="field__password-toggle"
+                  aria-label="Показать пароль"
+                  aria-pressed="false"
+                  data-password-for="login-password"
+                >
+                  <svg class="field__password-icon field__password-icon--show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg class="field__password-icon field__password-icon--hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1 4.24-4.24" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p class="modal-forgot-row">
+              <button type="button" class="link-button" id="login-show-forgot">Забыли пароль?</button>
+            </p>
+            <p class="modal-error" id="login-error" role="alert"></p>
+            <button type="submit" class="btn modal-submit">Войти</button>
+          </form>
+        </div>
+        <div id="login-forgot-panel" class="hidden">
+          <p class="modal-muted" id="login-forgot-hint">Введите email — отправим ссылку для нового пароля.</p>
+          <form id="form-forgot-password" class="modal-form">
+            <div class="field">
+              <label class="field__label" for="forgot-email">Email</label>
+              <input class="field__control" type="email" id="forgot-email" name="email" required autocomplete="email" maxlength="254" title="Адрес вида имя@домен.зона, до 254 символов" />
+            </div>
+            <p class="modal-error" id="forgot-error" role="alert"></p>
+            <p class="modal-success hidden" id="forgot-success" role="status"></p>
+            <button type="submit" class="btn modal-submit">Отправить</button>
+          </form>
+          <button type="button" class="btn btn-ghost modal-submit" id="login-back-from-forgot">Назад ко входу</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="modal-reg-title">
+      <div class="modal-dialog">
+        <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">×</button>
+        <h2 id="modal-reg-title">Регистрация</h2>
+        <form id="form-register" class="modal-form">
+          <div class="field">
+            <label class="field__label" for="reg-name">Имя</label>
+            <input class="field__control" type="text" id="reg-name" name="name" required maxlength="80" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-phone">Телефон</label>
+            <input
+              class="field__control field__control--phone"
+              type="tel"
+              id="reg-phone"
+              name="phone"
+              required
+              inputmode="numeric"
+              placeholder="+375 29 123-45-67"
+              autocomplete="tel"
+            />
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-email">Email</label>
+            <input class="field__control" type="email" id="reg-email" name="email" required autocomplete="email" maxlength="254" title="Адрес вида имя@домен.зона, до 254 символов" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-password">Пароль (от 8 символов)</label>
+            <div class="field__password">
+              <input
+                class="field__control field__control--with-toggle"
+                type="password"
+                id="reg-password"
+                name="password"
+                required
+                minlength="8"
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                class="field__password-toggle"
+                aria-label="Показать пароль"
+                aria-pressed="false"
+                data-password-for="reg-password"
+              >
+                <svg class="field__password-icon field__password-icon--show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="field__password-icon field__password-icon--hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1 4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-password-confirm">Повторите пароль</label>
+            <div class="field__password">
+              <input
+                class="field__control field__control--with-toggle"
+                type="password"
+                id="reg-password-confirm"
+                required
+                minlength="8"
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                class="field__password-toggle"
+                aria-label="Показать пароль"
+                aria-pressed="false"
+                data-password-for="reg-password-confirm"
+              >
+                <svg class="field__password-icon field__password-icon--show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="field__password-icon field__password-icon--hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1 4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p class="modal-error" id="register-error" role="alert"></p>
+          <button type="submit" class="btn modal-submit">Создать аккаунт</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="site-chat" class="site-chat">
+      <button
+        type="button"
+        class="site-chat__fab"
+        id="site-chat-toggle"
+        aria-expanded="false"
+        aria-controls="site-chat-panel"
+        aria-label="Открыть общий чат"
+      >
+        <svg class="site-chat__fab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <span class="site-chat__fab-label">Чат</span>
+      </button>
+      <div class="site-chat__panel hidden" id="site-chat-panel" role="dialog" aria-label="Общий чат участников" aria-modal="false">
+        <div class="site-chat__header">
+          <div class="site-chat__title">
+            <span class="site-chat__title-name">Общий чат</span>
+            <span class="site-chat__title-hint" id="site-chat-subtitle">Доступно после входа</span>
+          </div>
+          <button type="button" class="site-chat__close" id="site-chat-close" aria-label="Закрыть">×</button>
+        </div>
+        <div class="site-chat__messages" id="site-chat-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+        <form class="site-chat__form hidden" id="site-chat-form">
+          <input
+            type="text"
+            id="site-chat-input"
+            class="site-chat__input"
+            aria-label="Текст сообщения"
+            placeholder="Напишите сообщение…"
+            maxlength="2000"
+            autocomplete="off"
+          />
+          <button type="submit" class="site-chat__send btn btn-sm">Отправить</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
