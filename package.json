@@ -2,7 +2,7 @@
   "name": "swim-club-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Клуб любителей плавания — статический фронтенд и API на Express (данные в JSON, без нативной сборки)",
+  "description": "Клуб любителей плавания — статический фронтенд и API на Express (данные в PostgreSQL)",
   "main": "server/src/index.js",
   "scripts": {
     "start": "node server/src/index.js",
@@ -15,6 +15,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.16",
+    "pg": "^8.20.0",
     "validator": "^13.12.0"
   }
 }
